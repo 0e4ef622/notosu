@@ -12,9 +12,7 @@ class Scene {
     bool transitionFromDone = false;
   private:
     virtual void transitionIn() { }
-    virtual void transitionOut() {
-        transitionFromDone = true;
-    }
+    virtual void transitionOut() { transitionFromDone = true; }
 
     friend class Game;
 };

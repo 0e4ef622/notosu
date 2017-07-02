@@ -7,7 +7,9 @@
 class MainMenuScene : public Scene {
   public:
     MainMenuScene();
-    //void frame(Game *game, float deltaTimeSeconds) override;
+    void frame(Game *game, float deltaTimeSeconds) override;
+  private:
+    void transitionIn() override;
 };
 
 extern MainMenuScene mainMenuScene;
