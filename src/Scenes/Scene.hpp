@@ -9,11 +9,14 @@ class Scene {
   public:
     std::vector<sf::Drawable*> objects;
     virtual void frame(Game *game, float deltaTimeSeconds) { }
+    bool transitionFromDone = false;
   private:
-    virtual void transitionTo() { }
-    virtual void transitionFrom() { }
+    virtual void transitionIn() { }
+    virtual void transitionOut() {
+        transitionFromDone = true;
+    }
 
-    friend void Game::switchScene(Scene *targetScene);
+    friend class Game;
 };
 
 #endif // NOTOSU_SCENE_HPP

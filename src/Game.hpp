@@ -13,6 +13,7 @@ class Game {
   private:
     sf::RenderWindow *window;
     Scene *currentScene;
+    Scene *transitioningToScene;
     void render();
 };
 

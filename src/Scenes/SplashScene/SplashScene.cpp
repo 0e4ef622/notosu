@@ -28,8 +28,8 @@ SplashScene::SplashScene() {
 
 }
 
-static float elapsedTime = 0;
 void SplashScene::frame(Game *game, float deltaTimeSeconds) {
+    static float elapsedTime = 0;
     elapsedTime += deltaTimeSeconds;
     if (elapsedTime >= 3) game->switchScene(&mainMenuScene);
 }

@@ -11,14 +11,20 @@ void Game::begin() {
 
     sf::Clock deltaClock;
     while (window->isOpen()) {
-        sf::Time deltaTime = deltaClock.restart();
-        currentScene->frame(this, deltaTime.asSeconds());
-
         sf::Event event;
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window->close();
         }
+
+        if (transitioningToScene != NULL && currentScene->transitionFromDone) {
+            currentScene = transitioningToScene;
+            currentScene->transitionFromDone = false;
+            currentScene->transitionIn();
+        }
+
+        sf::Time deltaTime = deltaClock.restart();
+        currentScene->frame(this, deltaTime.asSeconds());
         render();
     }
 }
@@ -38,7 +44,8 @@ void Game::render() {
 }
 
 void Game::switchScene(Scene *targetScene) {
-    currentScene->transitionFrom();
-    targetScene->transitionTo(); // something like this idk .-.
-    currentScene = targetScene;
+    transitioningToScene = targetScene;
+    currentScene->transitionOut();
+    //targetScene->transitionTo(); // something like this idk .-.
+    //currentScene = targetScene;
 }
