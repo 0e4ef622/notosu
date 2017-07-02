@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.hpp"
-#include "Scenes/Scene.hpp"
-#include "Scenes/SplashScene/SplashScene.hpp"
+#include "UI/Scene.hpp"
+#include "scenes/SplashScene/SplashScene.hpp"
 
 void Game::begin() {
 

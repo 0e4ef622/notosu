@@ -2,7 +2,7 @@
 #define NOTOSU_SPLASHSCENE_HPP
 
 #include "Game.hpp"
-#include "Scenes/Scene.hpp"
+#include "UI/Scene.hpp"
 
 class SplashScene : public Scene {
   public:

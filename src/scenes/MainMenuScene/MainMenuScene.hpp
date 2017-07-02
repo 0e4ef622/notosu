@@ -2,7 +2,7 @@
 #define NOTOSU_MAINMENUSCENE_HPP
 
 #include "Game.hpp"
-#include "Scenes/Scene.hpp"
+#include "UI/Scene.hpp"
 
 class MainMenuScene : public Scene {
   public:

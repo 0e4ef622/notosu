@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.hpp"
-#include "Scenes/SplashScene/SplashScene.hpp"
-#include "Scenes/MainMenuScene/MainMenuScene.hpp"
+#include "SplashScene.hpp"
+#include "scenes/MainMenuScene/MainMenuScene.hpp"
 
 SplashScene splashScene;
 
