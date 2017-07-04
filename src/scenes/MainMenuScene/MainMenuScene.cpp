@@ -1,30 +1,33 @@
 #include <SFML/Graphics.hpp>
+#include "ResourceManager.hpp"
 #include "MainMenuScene.hpp"
 
 MainMenuScene mainMenuScene;
 
-static sf::RectangleShape *rect;
-static sf::RectangleShape *fadeOverlay;
-
 MainMenuScene::MainMenuScene() {
+    /*
+     * sf::RectangleShape rect;
+     * sf::Text meems;
+     * sf::RectangleShape fadeOverlay;
+     */
 
-    rect = new sf::RectangleShape();
+    rect.setSize(sf::Vector2f(400, 50));
+    rect.setOrigin(200, 25);
+    rect.setPosition(320, 240);
+    rect.setFillColor(sf::Color::Transparent);
+    rect.setOutlineThickness(3);
+    rect.setOutlineColor(sf::Color::White);
 
-    rect->setSize(sf::Vector2f(400, 50));
-    rect->setOrigin(200, 25);
-    rect->setPosition(320, 240);
-    rect->setFillColor(sf::Color::Transparent);
-    rect->setOutlineThickness(3);
-    rect->setOutlineColor(sf::Color::White);
+    objects.push_back(&rect);
 
-    objects.push_back(rect);
+    meems.setFont(getResource<sf::Font>("rsc/fonts/arial.ttf"));
+    meems.setString("meems");
+    meems.setCharacterSize(100);
+    meems.setFillColor(sf::Color::White);
 
-    fadeOverlay = new sf::RectangleShape();
+    objects.push_back(&meems);
 
-    fadeOverlay->setSize(sf::Vector2f(640, 480));
-    fadeOverlay->setFillColor(sf::Color::Black);
-
-    objects.push_back(fadeOverlay);
+    fadeOverlay.setSize(sf::Vector2f(640.0f, 480.0f));
 }
 
 static float transparency;
@@ -32,10 +35,20 @@ static float transparency;
 void MainMenuScene::frame(Game *game, float deltaTimeSeconds) {
     if (transparency < 255.0f) {
         transparency += deltaTimeSeconds * 255.0f;
-        fadeOverlay->setFillColor(sf::Color(0.0f, 0.0f, 0.0f, 255.0f - transparency));
     }
+}
+
+void MainMenuScene::draw(sf::RenderWindow &window) {
+    Scene::draw(window);
+
+    // sf::RectangleShape fadeOverlay;
+
+    if (transparency < 255.0f)
+        fadeOverlay.setFillColor(sf::Color(0.0f, 0.0f, 0.0f, 255.0f - transparency));
+    window.draw(fadeOverlay);
 }
 
 void MainMenuScene::transitionIn() {
     transparency = 0;
+    transitionFromDone = false;
 }

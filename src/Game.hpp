@@ -9,7 +9,7 @@ class Game {
   public:
     void begin();
     void exit();
-    void switchScene(Scene *targetScene);
+    void switchScene(Scene &targetScene);
   private:
     sf::RenderWindow *window;
     Scene *currentScene;

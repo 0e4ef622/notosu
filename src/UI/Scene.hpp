@@ -10,9 +10,10 @@ class Scene {
     std::vector<sf::Drawable*> objects;
     virtual void frame(Game *game, float deltaTimeSeconds) { }
     bool transitionFromDone = false;
-  private:
-    virtual void transitionIn() { }
-    virtual void transitionOut() { transitionFromDone = true; }
+  protected:
+    virtual void transitionIn();
+    virtual void transitionOut();
+    virtual void draw(sf::RenderWindow &window);
 
     friend class Game;
 };

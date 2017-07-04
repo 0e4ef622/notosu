@@ -8,6 +8,8 @@ class SplashScene : public Scene {
   public:
     SplashScene();
     void frame(Game *game, float deltaTimeSeconds) override;
+  private:
+    sf::Text splashText;
 };
 
 extern SplashScene splashScene;

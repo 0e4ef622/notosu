@@ -37,14 +37,13 @@ void Game::render() {
 
     window->clear();
 
-    for (sf::Drawable *object : currentScene->objects) {
-        window->draw(*object);
-    }
+    currentScene->draw(*window);
+
     window->display();
 }
 
-void Game::switchScene(Scene *targetScene) {
-    transitioningToScene = targetScene;
+void Game::switchScene(Scene &targetScene) {
+    transitioningToScene = &targetScene;
     currentScene->transitionOut();
     //targetScene->transitionTo(); // something like this idk .-.
     //currentScene = targetScene;
