@@ -3,7 +3,7 @@
 
 #include "Game.hpp"
 #include "UI/Scene.hpp"
-#include "SomeButton.hpp"
+#include "UI/Button.hpp"
 
 class MainMenuScene : public Scene {
   public:
@@ -14,7 +14,11 @@ class MainMenuScene : public Scene {
     void transitionIn() override;
   private:
     sf::RectangleShape rect;
-    SomeButton someButton;
+
+    class SomeButton : public Button {
+        using Button::Button;
+        void onClick() override;
+    } someButton;
 
     sf::RectangleShape fadeOverlay;
 };

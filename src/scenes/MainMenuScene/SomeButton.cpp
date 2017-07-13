@@ -1,6 +1,6 @@
 #include <iostream>
-#include "SomeButton.hpp"
+#include "MainMenuScene.hpp"
 
-void SomeButton::onClick() {
+void MainMenuScene::SomeButton::onClick() {
     std::cout << "meems" << std::endl;
 }
