@@ -1,12 +1,16 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "defs.h"
 #include "Game.hpp"
 #include "UI/Scene.hpp"
 #include "scenes/SplashScene/SplashScene.hpp"
 
+int WINDOW_WIDTH = 1024;
+int WINDOW_HEIGHT = 600;
+
 void Game::begin() {
 
-    window = new sf::RenderWindow(sf::VideoMode(640, 480), "notosu", sf::Style::Titlebar | sf::Style::Close);
+    window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "notosu", sf::Style::Titlebar | sf::Style::Close);
     currentScene = &splashScene;
 
     sf::Clock deltaClock;

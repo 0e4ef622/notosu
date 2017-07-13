@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "defs.h"
 #include "Game.hpp"
 #include "SplashScene.hpp"
 #include "ResourceManager.hpp"
@@ -18,7 +19,7 @@ SplashScene::SplashScene() {
     sf::Vector2f center(boundingBox.left + boundingBox.width/2, boundingBox.top + boundingBox.height/2);
 
     splashText.setOrigin(center);
-    splashText.setPosition(320, 240);
+    splashText.setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
 
     objects.push_back(&splashText);
 }

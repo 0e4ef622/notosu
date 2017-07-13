@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "defs.h"
 #include "ResourceManager.hpp"
 #include "MainMenuScene.hpp"
 
@@ -13,7 +14,7 @@ MainMenuScene::MainMenuScene() {
 
     rect.setSize(sf::Vector2f(400, 50));
     rect.setOrigin(200, 25);
-    rect.setPosition(320, 240);
+    rect.setPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
     rect.setFillColor(sf::Color::Transparent);
     rect.setOutlineThickness(3);
     rect.setOutlineColor(sf::Color::White);
@@ -27,7 +28,7 @@ MainMenuScene::MainMenuScene() {
 
     objects.push_back(&meems);
 
-    fadeOverlay.setSize(sf::Vector2f(640.0f, 480.0f));
+    fadeOverlay.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
 }
 
 static float transparency;
