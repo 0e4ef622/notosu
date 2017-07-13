@@ -4,12 +4,13 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Game.hpp"
+#include "Button.hpp"
 
 class Scene {
-  public:
-    std::vector<sf::Drawable*> objects;
-    bool transitionFromDone = false;
   protected:
+    std::vector<sf::Drawable*> objects;
+    std::vector<Button*> buttons;
+    bool transitionFromDone = false;
     virtual void transitionIn();
     virtual void transitionOut();
 

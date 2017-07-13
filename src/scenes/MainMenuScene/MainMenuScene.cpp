@@ -8,7 +8,7 @@ MainMenuScene mainMenuScene;
 MainMenuScene::MainMenuScene() {
     /*
      * sf::RectangleShape rect;
-     * sf::Text meems;
+     * SomeButton someButton;
      * sf::RectangleShape fadeOverlay;
      */
 
@@ -21,12 +21,8 @@ MainMenuScene::MainMenuScene() {
 
     objects.push_back(&rect);
 
-    meems.setFont(getResource<sf::Font>("rsc/fonts/arial.ttf"));
-    meems.setString("meems");
-    meems.setCharacterSize(100);
-    meems.setFillColor(sf::Color::White);
-
-    objects.push_back(&meems);
+    someButton = SomeButton(rect.getGlobalBounds());
+    buttons.push_back(&someButton);
 
     fadeOverlay.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
 }
@@ -40,6 +36,8 @@ void MainMenuScene::frame(Game *game, float deltaTimeSeconds) {
 }
 
 void MainMenuScene::draw(sf::RenderWindow &window) {
+    // draw everything first so that we can draw the fade overlay
+    // on top of everything
     Scene::draw(window);
 
     // sf::RectangleShape fadeOverlay;

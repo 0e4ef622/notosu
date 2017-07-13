@@ -3,6 +3,7 @@
 #include "defs.h"
 #include "Game.hpp"
 #include "UI/Scene.hpp"
+#include "UI/Button.hpp"
 #include "scenes/SplashScene/SplashScene.hpp"
 
 int WINDOW_WIDTH = 1024;
@@ -17,8 +18,24 @@ void Game::begin() {
     while (window->isOpen()) {
         sf::Event event;
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window->close();
+            switch (event.type) {
+
+                case sf::Event::Closed:
+                    window->close();
+                    break;
+
+                case sf::Event::MouseButtonPressed:
+                    if (event.mouseButton.button == sf::Mouse::Left) {
+                        for (Button *button : currentScene->buttons) {
+                            if (button->contains(event.mouseButton.x, event.mouseButton.y))
+                                button->onClick();
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         if (transitioningToScene != NULL && currentScene->transitionFromDone) {
