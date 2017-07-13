@@ -12,7 +12,11 @@ class Scene {
   protected:
     virtual void transitionIn();
     virtual void transitionOut();
+
+    // things to be run every frame before rendering
     virtual void frame(Game *game, float deltaTimeSeconds) { }
+
+    // do actual rendering
     virtual void draw(sf::RenderWindow &window);
 
     friend class Game;
