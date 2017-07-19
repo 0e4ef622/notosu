@@ -4,7 +4,7 @@
 #include "Game.hpp"
 #include "UI/Scene.hpp"
 
-class SplashScene : public Scene {
+class SplashScene final : public Scene {
   public:
     SplashScene();
     void frame(Game *game, float deltaTimeSeconds) override;

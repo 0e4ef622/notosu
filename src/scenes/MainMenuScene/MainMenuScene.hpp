@@ -1,11 +1,12 @@
 #ifndef NOTOSU_MAINMENUSCENE_HPP
 #define NOTOSU_MAINMENUSCENE_HPP
 
+#include <SFML/Graphics.hpp>
 #include "Game.hpp"
 #include "UI/Scene.hpp"
 #include "UI/Button.hpp"
 
-class MainMenuScene : public Scene {
+class MainMenuScene final : public Scene {
   public:
     MainMenuScene();
     void frame(Game *game, float deltaTimeSeconds) override;
@@ -15,8 +16,9 @@ class MainMenuScene : public Scene {
   private:
     sf::RectangleShape rect;
 
-    class SomeButton : public Button {
-        using Button::Button;
+    class SomeButton final : public RectButton {
+      public:
+        using RectButton::RectButton;
         void onClick() override;
     } someButton;
 
