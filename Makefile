@@ -1,12 +1,12 @@
 BINARY  = notosu
-CC     ?= g++
-SHELL   = /bin/sh
-CFLAGS  = -g -Wall
-LDFLAGS = -lsfml-graphics -lsfml-system -lsfml-window
+CXX    ?= g++
+SHELL  ?= /bin/sh
+CXXFLAGS  = -g -Wall
+LDFLAGS = -lsfml-graphics -lsfml-system -lsfml-window -lsfml-audio
 SRCDIR  = src
 BINDIR  = bin
 
-ALL_CFLAGS := -I$(SRCDIR) $(CFLAGS)
+ALL_CXXFLAGS := -I$(SRCDIR) $(CXXFLAGS)
 SOURCES    := $(shell find $(SRCDIR) -type f -name '*.cpp')
 STRUCTURE  := $(sort $(subst $(SRCDIR),$(BINDIR),$(dir $(SOURCES))))
 OBJECTS    := $(subst $(SRCDIR),$(BINDIR),$(SOURCES:%.cpp=%.o))
@@ -21,13 +21,13 @@ $(STRUCTURE):
 	mkdir -p $(STRUCTURE)
 
 $(BINARY): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(ALL_CFLAGS) -o $(BINARY) $(OBJECTS)
+	$(CXX) $(LDFLAGS) $(ALL_CXXFLAGS) -o $(BINARY) $(OBJECTS)
 
 $(OBJECTS): $(BINDIR)/%.o: $(SRCDIR)/%.cpp
-	$(CC) $(LDFLAGS) $(ALL_CFLAGS) -o $@ -c $<
+	$(CXX) $(LDFLAGS) $(ALL_CXXFLAGS) -o $@ -c $<
 
 .depend: $(SOURCES)
-	$(CC) -MM $(SOURCES) $(ALL_CFLAGS) | sed "s/\([A-Za-z0-9]\+\)\.o/bin\/\1.o/g" > ./.depend
+	$(CXX) -MM $(SOURCES) $(ALL_CXXFLAGS) | sed "s/\([A-Za-z0-9]\+\)\.o/bin\/\1.o/g" > ./.depend
 
 include .depend
 
