@@ -1,5 +1,5 @@
 BINARY  = notosu
-CC      = g++
+CC     ?= g++
 SHELL   = /bin/sh
 CFLAGS  = -g -Wall
 LDFLAGS = -lsfml-graphics -lsfml-system -lsfml-window
